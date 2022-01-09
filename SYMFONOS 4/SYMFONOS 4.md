@@ -87,6 +87,7 @@ We can upload LinEnum on the target with python3 and the lib http.server:
 
 ![4d63d0022347ed21c3ba7df24c2522c0.png](./_resources/47d04bb3e5c543a4aae1de06412edae3.png)
 ![820b558de83960b7ef1042b7af6591e5.png](./_resources/ab77bd1365544d76b1c000435b81d303.png)
+
 `./LinEnum.sh -t > info.txt`
 
 And download from target:
