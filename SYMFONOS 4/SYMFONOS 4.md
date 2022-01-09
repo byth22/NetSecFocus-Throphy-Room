@@ -37,6 +37,7 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection/
 
 ## 2.3 LFI (local file inclusion) - using bash to generate payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders
+
 First it needs to grep all .log files and exclude the extension.
 We also need add some "../" multiplied by a looping for cases where there is no path traversal:
 
