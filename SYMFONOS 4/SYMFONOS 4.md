@@ -84,7 +84,7 @@ Since we have nc or any other way on target, we can use it for get reverse shell
 
 
 # 3 Post-exploitation
-https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
+* https://github.com/rebootuser/LinEnum/blob/master/LinEnum.sh
 
 We can upload LinEnum on the target with python3 and the lib http.server:
 
