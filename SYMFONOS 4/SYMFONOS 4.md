@@ -98,6 +98,7 @@ And download from target:
 
 ## 3.1 Remote forwarding with ssh
 https://www.ssh.com/academy/ssh/tunneling/example
+
 We need to liberate the internal port 8080 on the kali for examine it:
 `ssh -fN root@192.168.196.121 -R 8888:127.0.0.1:8080`
 
