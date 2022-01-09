@@ -36,6 +36,7 @@ Or you can use netdiscover.
 ## 1.3 Web
 ### 1.3.1 Gobuster enum web content
 `gobuster dir -u http://192.168.196.125 -w /usr/share/dirbuster/wordlists/directory-list-1.0.txt -f -x php,bkp,bak,txt,html,aspx -o gobuster/info-403.txt`
+
 ![0975e9ea8b8186843034eaa7daa54ebf.png](./_resources/08373315ed444d79bf152bbab584aea8.png)
 
 `gobuster dir -u http://192.168.196.125 -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -f -x php,bkp,bak,txt,html,aspx -o info-403.1.txt`
@@ -140,9 +141,11 @@ https://intoli.com/blog/dangerous-pickles/
 You can use use burpsuit instead code an exploit:
 ![ce0615a224028acc4f853e5964d9aec9.png](./_resources/48add1eec8404568aa483028b4b3ffb2.png)
 Needs encode to base64:
+
 ![1581ff27f0379884666328b034bca78e.png](./_resources/0fe79ecb71274e4b8eaa09a7e72de099.png)]
 
 And rooted:
+
 ![9ff866356191b6a5f8b5598ea0661897.png](./_resources/df8406e80fa1459399853773280f05ac.png)
 
 ### 3.3.3 Python Pickle with coding exploit to get root
@@ -195,5 +198,6 @@ print (response.content)
 ```
 
 And rooted:
+
 ![7f985f49d2994f98f434e810c1788f65.png](./_resources/24c617101aa14ecfbedb88e5539534f3.png)
  
