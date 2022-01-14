@@ -1,27 +1,3 @@
-SYMFONOS 5V2
-
-## Methodology and summary
-## Table of Contents
-1. [Information Gathering]()
-	1.1 [Discovery host]()
-	1.2 [Service Enum]()
-	1.3 [Web]()
-		1.3,1 [Gobuster enum web content]()
-		1.3.2 [Downloading and reading .log files]()
-
-2. [Exploitation]()
-	2.1 [Bypass login sqli]()
-	2.2 [LFI (local file inclusion)  - using bash to generate payloads]()
-		2.2.1 [Reverse shell]()
-
-3. [Post exploitation]()
-	3.1 [Remote forwarding with ssh]()
-	3.2 [Web 8080]()
-		3.2.1 [Gobuster enum web content]()
-		3.2.2 [Python Pickle without exploit to get root]()
-		3.2.3 [Python Pickle with coding exploit to get root]()
-
-# 1 Information gathering
 ## 1.1 Discovery host
 `nmap -Pn -F 192.168.196.1/24 -oN host_discovery.txt`
 ![5c85eeec9fcbcf370e825d573ebbcd96.png](./_resources/deafa02fa26b4a93b959080a6e9e7c3c.png)
