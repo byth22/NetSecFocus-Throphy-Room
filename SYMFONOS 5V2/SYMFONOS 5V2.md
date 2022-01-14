@@ -18,6 +18,7 @@
 
 ## 1.3.2 Dirb enum web content
 `dirb http://192.168.196.128`
+
 ![4d40c830929a49cedc6d5dd162fb7ae1.png](./_resources/0a0b1081cd534842beacb5c5693314ea.png)
 
 
