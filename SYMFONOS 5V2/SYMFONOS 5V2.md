@@ -1,3 +1,6 @@
+# SYMFONOS 5V2
+
+# Information Gathering
 ## 1.1 Discovery host
 `nmap -Pn -F 192.168.196.1/24 -oN host_discovery.txt`
 ![5c85eeec9fcbcf370e825d573ebbcd96.png](./_resources/deafa02fa26b4a93b959080a6e9e7c3c.png)
