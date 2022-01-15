@@ -17,13 +17,15 @@
 ### 1.3.1 Gobuster
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-1.0.txt --wildcard -o info.txt`
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt --wildcard -o info1.txt`
+
 You will need grep data that not contain 400 status code:
 
 ![57f359a1ac8c6bb2a67ff4619507d0be.png](./_resources/cf75231c96414c28b812d0e075b996fa.png)
 
 ### 1.3.2 User manual in main page
 `http://192.168.122.128/init/static/evote_user_manual.pdf`
-It shows us the app version:
+
+  It shows us the app version:
 ![e0e864b44d766ba704d46023ccf3cbee.png](./_resources/898f5658981f44ad835074360dc57734.png)
 
 ### 3.3.3 Web2py exploit (but not usable)
