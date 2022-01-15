@@ -16,6 +16,7 @@
 ## 1.3 Web 80
 ### 1.3.1 Gobuster
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-1.0.txt --wildcard -o info.txt`
+
 `gobuster dir -u http://192.168.122.128 -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt --wildcard -o info1.txt`
 
 You will need grep data that not contain 400 status code:
