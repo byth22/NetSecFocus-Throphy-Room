@@ -16,6 +16,7 @@
 ## 1.3 Web port 7331
 ### 1.3.1 Enum web content
 `gobuster dir -u http://192.168.196.129:7331/ -w /usr/share/wordlists/dirb/big.txt -t 50 -f -o info2.txt` <- with added slashs, it don't returns results.
+
 `gobuster dir -u http://192.168.196.129:7331/ -w /usr/share/wordlists/dirb/big.txt -t 50`
 ![137c31d8c64c55e91dc55f8509ba7b28.png](./_resources/2c1abbb4f93b4766a582e39cf03f966c.png)
 
