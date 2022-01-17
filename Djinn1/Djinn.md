@@ -25,6 +25,7 @@
 
 ### 1.3.3 Wish page
 ![4fe4d5bc99c2ef38bb722919db346e2c.png](./_resources/cd4601967aa149438cc73d58f44a578e.png)
+
 What is typed here is interpreted as linux terminal commands.
 
 ![f6b3387328509646f7c9b061e16361b3.png](./_resources/8286b0d038d34ef2ae002ccb6cfdef7a.png)
