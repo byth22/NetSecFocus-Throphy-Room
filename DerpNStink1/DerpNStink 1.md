@@ -128,33 +128,44 @@ main()
 
 
 # 3 Post-exploitation
-Contet of wp-config.php:
+Content of wp-config.php:
+
 ![fb8068471ca1d4b5d7be2285bcce71e3.png](./_resources/6b13009946ad4e3fb8bbd98c3173cfde.png)
 
 ## 3.1 Hashs on mysql table
 `mysql -u root -p`
+
 ![5c6436c8362f471139a0e9a9044710d0.png](./_resources/8926f12a56e54467910ac059f92731fc.png)
+
 ![1f029aa772302702cbb0d4a6207a0517.png](./_resources/8e53677e6c204be2b09a4268e8da497f.png)
+
 ![6ec5cfc6d6e885f355217954d0d94308.png](./_resources/c4f684a3f19243cab4cb741ea7c9119a.png)
 
 ### 3.1.1 Hashcat cracking md5
 https://blog.wpsec.com/cracking-wordpress-passwords-with-hashcat/
+
 `Hash-identifier` was identified that that hahes are md5 wordpress.
-wedgie57
+`hashcat -m 400 -a 1 hash.txt /root/shared/rockyou.txt`
+wedgie57 <- password
+
 
 ## 3.2 Login as Stinky
 Based on home users, tried to login to ssh.
 
 ![6b61e6a73bce58b7d6ea12e500c638e1.png](./_resources/d85640abd8394441a6d85ddfcfea4e91.png)
+
 Without permission.
 
 ## 3.3 Ftp login as Stinky
 ![a2e4a80ff4eca06f9c9125b4ec7b888a.png](./_resources/eed8ef3d023e4be588cc90ac3336a849.png)
+
 `cat derpissues.txt key.txt test.txt| less -r`
+
 ![eef4c494629eb931a211c3d7ab5e974c.png](./_resources/79abac3db6064161ad49d8c5199f662e.png)
 
 ## 3.4 SSH login as Stinky
 ![c60fdacd5d898c5db3d435a6db6ce39d.png](./_resources/ab49793d8a3b4d0c8d5bc1d8d73c8c32.png)
+
 It needs specific permissions.
 
 `chmod  0200 key.txt`
@@ -170,10 +181,12 @@ Analysing this post requests on file user-new.php, we found a user and password 
 
 ### 3.5 Login with su as mrderp
 mrderp:derpderpderpderpderpderpderp
+
 ![0518210d69c6325024742cac99c1c5cb.png](./_resources/1ee38c1f042749849f6d993db11b0c85.png)
 
 ## 3.6 Login as root - sudo abusing
 ![7fd1f9d5bce9b1abb9d35ab2f67e3717.png](./_resources/7bf1271044dd479d8768b8444b45e3f8.png)
+
 This folder (binaries) doesn't exist, but we can creat and abuse it.
 
 ![68d4c2791fe60019112d1d09aa26aba7.png](./_resources/f0208a409ff6421c8d8cf60b25f3e266.png)
