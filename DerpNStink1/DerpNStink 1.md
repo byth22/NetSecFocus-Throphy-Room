@@ -145,7 +145,9 @@ Content of wp-config.php:
 https://blog.wpsec.com/cracking-wordpress-passwords-with-hashcat/
 
 `Hash-identifier` was identified that that hahes are md5 wordpress.
+
 `hashcat -m 400 -a 1 hash.txt /root/shared/rockyou.txt`
+
 wedgie57 <- password
 
 
