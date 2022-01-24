@@ -171,6 +171,7 @@ Without permission.
 It needs specific permissions.
 
 `chmod  0200 key.txt`
+
 ![d627d1abe29e189592a562c12091109f.png](./_resources/89162eee4abe4f6dbbd3d96548bc1ca9.png)
 
 ### 3.4.1 Enum and analysing pcap file
