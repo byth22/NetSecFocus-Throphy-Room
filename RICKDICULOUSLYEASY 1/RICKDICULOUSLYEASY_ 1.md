@@ -32,6 +32,7 @@ One password: winter
 ### 1.3.4 Tracertool
 ![83a413f0fb27b7dd0d621058a453a53c.png](./_resources/8402a57c562d4cd795ffe23702a1a49f.png)
 ![12ed8ccfae4bdba7b55dca826c4fc9be.png](./_resources/7d0cc4d178454781bd16c277038a0b01.png)
+
 Is possible concatenate other commands with semicolon. But `cat` is blocked.
 However `head` and `tail` are usable.
 ![a14f89664b17afeb6d17845e40a9f44b.png](./_resources/f944b08e90ad4ff69e442ca0af3cf73d.png)
@@ -48,6 +49,7 @@ And with the previously enumerated Summer user combined with the password `winte
 ![bcc4a8276553a834e58a07ffc7466058.png](./_resources/dc40b5f6108d47ea8b06eb77bcceac4b.png)
 
 The zip file needs password to be extracted:
+
 ![a330460022cafbe50f39d21435fca515.png](./_resources/adf86691bb9641e39b59602da06b3582.png)
 
 And in the file `Safe_Password.jpg`, using `strings` command to get all possible strings, there is a possible password:
@@ -60,6 +62,7 @@ We can use in the safe file binary:
 ![59a50e28b66bfed5b58df5c1082b324b.png](./_resources/9f8e0aae5d24498aa47031247ebc62e4.png)
 
 https://rickandmorty.fandom.com/wiki/Rick_Sanchez
+
 ![f72f3ac2449d8c2c1122402aad3badd0.png](./_resources/073d8a2fbff34b5e862f83123abcf552.png)
 
 ## 3.1 Crunch to generate wordlist
@@ -69,7 +72,9 @@ Following this tips:
 - one of the following words (the flesh curtains)
 
 `crunch 5 5 -t ,%The >> wordlist.txt`
+
 `crunch 7 7 -t ,%Flesh >> wordlist.txt`
+
 `crunch 10 10 -t ,%Curtains >> wordlist.txt`
 
 ## 3.2 Brute-force ssh with Hydra
