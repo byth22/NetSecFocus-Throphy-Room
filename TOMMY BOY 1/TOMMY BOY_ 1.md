@@ -132,7 +132,8 @@ Without success here.
 
 `john hash.hash wordlist.txt`
 
-Or you can user fcrackzip
+Or you can user fcrackzip:
+
 `fcrackzip -v -u -D -p wordlist.txt t0msp4ssw0rdz.zip`
 
 ![f4fdee485d2ef94aa40596743d92f818.png](./_resources/247028d5cda1454e8ca9f0be7fbe124e.png)
