@@ -73,6 +73,7 @@ https://en.wikipedia.org/wiki/Java_KeyStore <- for basic undesrtand
 https://dzone.com/articles/extracting-a-private-key-from-java-keystore-jks <- from understand how to extract it
 
 Basically it's a repository of security certificates in some java format and we can abuse it:
+
 `keytool -importkeystore -srckeystore .keystore -destkeystore keystore.p12 -deststoretype PKCS12 -srcalias tomcat -deststorepass tomcat -destkeypass tomcat`
 `openssl pkcs12 -in keystore.p12 -nodes -nocerts -out key.pem`
 ![77ed95b68184d2e6602c256c621809c1.png](./_resources/7917d431e95b473aaa1e08f0864405ce.png)
