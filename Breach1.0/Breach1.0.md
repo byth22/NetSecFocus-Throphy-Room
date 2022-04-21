@@ -114,7 +114,7 @@ And without success exploiting it, the only useful info is that the user is dba.
 #### 2.1.1.1 Python code to exploit Time-based SQL Injection
 
 Other way to exploit without using Sqlmap is to code an exploit in python as POC to check if it's dba/root.
-Exploit link:
+Exploit link: https://github.com/byth22/Exploits/blob/main/Web/timeSqli-query_sleep.py
 
 Exploiting:
 
