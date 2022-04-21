@@ -20,8 +20,8 @@ Instead run a scan for get banners, we can access a common port (80 - web).
 ![08bd670a22cebbc95c8ac9fc3c905041.png](./_resources/00ad64a4c4c943f39f1000a3753af43b.png)
 
 A possible login and password inside a base64 inside base64 and other .html file to access.
+
 `pgibbons:damnitfeel$goodtobeagang$ta`
-*
 
 ### 1.2.3 Some images and a metametada with an user/password (comments), extracted with exiftool
 ![5db831eea4d81b401c69534a9a4b65cf.png](./_resources/fadc7019bf37452c9bae2ea9ca463159.png)
