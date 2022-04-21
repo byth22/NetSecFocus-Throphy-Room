@@ -83,6 +83,7 @@ Basically it's a repository of security certificates in some java format and we 
 # 2 Exploitation
 ## 2.1 Burpsuite (Intruder) and SQL injection
 https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/Common-Credentials/10k-most-common.txt
+
 After trying a brute-force with Burpsuit (Intruder) and a nice short list of usernames and the fond possible password extracted in the metadata, it returns okay:
 
 ![93b2ac62a3134912c9bc2c7a3cb609fc.png](./_resources/329a0426aee94e0c9ecf76d24bb04bc6.png)
@@ -93,6 +94,7 @@ After trying a brute-force with Burpsuit (Intruder) and a nice short list of use
 ![4b8c1d9278e0aab21fa40c70633685e2.png](./_resources/97d16be084484fa993303969ee19bbb2.png)
 
 Here we found a sql injection based on previously possible exploit:
+
 ![c59ba3edbe322b03755560c7beff37be.png](./_resources/4329da5b8c624523b15d8340cb503890.png)
 
 It needs to be captured with burpsuit, saved as request and pointed to in sqlmap:
@@ -120,9 +122,10 @@ https://packetpushers.net/using-wireshark-to-decode-ssltls-packets/ <- method to
 
 ### 2.2.1 Reading .pcap with Wireshark
 And opening this .pcap, we can observe that there's a web server running on port 8443 (item 6):
-Make note that the connect starts on item 5 on port 8443 and after call the TLS - Client Hello. That means there might actually be an encrypted web connection. We can try to decrypt.
 
 ![073b99715c9df1c4490beaf1425b2f1e.png](./_resources/431a02c559534054bc7ca0d172275be4.png)
+
+Make note that the connect starts on item 5 on port 8443 and after call the TLS - Client Hello. That means there might actually be an encrypted web connection. We can try to decrypt.
 
 1. -> edit -> preferences -> RSA keys -> add new key file -> select your .pem file.
 2. you need to re-open your .pcap file.
@@ -130,6 +133,7 @@ Make note that the connect starts on item 5 on port 8443 and after call the TLS 
 And now is possible to read it:
 
 1. -> select item 6 for options -> follow -> TLS stream:
+2. 
 ![026d2bddb679424163bcb4691d5584f5.png](./_resources/769bd7f0eb104d02ac9515320094f83c.png)
 
 Indeed there is a web connection using tomcat and WWW-Authenticate (basic auth).
@@ -228,6 +232,7 @@ Jun 27 09:18:01 Breach CRON[2897]: (root) CMD (/usr/share/cleanup/tidyup.sh)
 ```
 
 A cronjob run every 3 minutes by root, but it's not writable:
+
 `-rwxr-xr-x 1 root root 174 Jun 26 21:49 tidyup.sh`
 
 Leets look it:
