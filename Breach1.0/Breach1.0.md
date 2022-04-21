@@ -97,7 +97,7 @@ After trying a brute-force with Burpsuit (Intruder) and a nice short list of use
 
 Here we found a sql injection based on previously possible exploit:
 
-https://github.com/byth22/Exploits/edit/main/Web/timeSqli-query_sleep.py
+https://github.com/byth22/Exploits/blob/main/Web/timeSqli-query_sleep.py
 
 ![c59ba3edbe322b03755560c7beff37be.png](./_resources/4329da5b8c624523b15d8340cb503890.png)
 
