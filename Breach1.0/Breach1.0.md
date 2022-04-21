@@ -69,7 +69,9 @@ It's a java keystore:
 ![e3d5638187e84a5a7de5d6313e4be92a.png](./_resources/9365c918d37b4336a5d3db979c96df8e.png)
 
 here I have a short reference to understand basically:
+
 https://en.wikipedia.org/wiki/Java_KeyStore <- for basic undesrtand
+
 https://dzone.com/articles/extracting-a-private-key-from-java-keystore-jks <- from understand how to extract it
 
 Basically it's a repository of security certificates in some java format and we can abuse it:
