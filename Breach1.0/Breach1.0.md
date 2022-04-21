@@ -63,7 +63,7 @@ Password: tomcat
 
 File: http://192.168.110.140/impresscms/_SSL_test_phase1.pcap
 
-#### 1.2.4.4 .keystore file
+#### 1.2.4.4 .keystore file - reading https traffic
 It's a java keystore:
 
 ![e3d5638187e84a5a7de5d6313e4be92a.png](./_resources/9365c918d37b4336a5d3db979c96df8e.png)
@@ -96,6 +96,8 @@ After trying a brute-force with Burpsuit (Intruder) and a nice short list of use
 ![4b8c1d9278e0aab21fa40c70633685e2.png](./_resources/97d16be084484fa993303969ee19bbb2.png)
 
 Here we found a sql injection based on previously possible exploit:
+
+https://github.com/byth22/Exploits/edit/main/Web/timeSqli-query_sleep.py
 
 ![c59ba3edbe322b03755560c7beff37be.png](./_resources/4329da5b8c624523b15d8340cb503890.png)
 
