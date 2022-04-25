@@ -163,7 +163,7 @@ cipher tools and consequently in the browser too.
 
 The option was to use the Burpsuit as a proxy to bypass this block.
 
-Url acessada: https://192.168.110.140:8443/_M@nag3Me/html
+Accessed URL: https://192.168.110.140:8443/_M@nag3Me/html
 
 ![f697f6146754bf9dbd3bea4d438d3942.png](./_resources/11594bb3429d430bab6bd7fb44d3815b.png)
 
